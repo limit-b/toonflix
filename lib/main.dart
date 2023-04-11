@@ -44,6 +44,85 @@ class App extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 120,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "Total Balance",
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.8),
+                          fontSize: 22,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "\$5 194 382",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 48,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(45),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 20,
+                            horizontal: 40,
+                          ),
+                          child: Text(
+                            "Transfer",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(45),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 20,
+                            horizontal: 40,
+                          ),
+                          child: Text(
+                            "Request",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
             ],
           ),
         ),
