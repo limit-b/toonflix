@@ -1,6 +1,6 @@
 # toonflix
 
-A new Flutter project.
+플러터 웹툰 앱
 
 ## Getting Started
 
