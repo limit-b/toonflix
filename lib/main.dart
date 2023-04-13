@@ -14,15 +14,11 @@ class MyStlApp extends StatelessWidget {
       home: const HomeScreen(),
       theme: ThemeData(
         cardColor: const Color(0xFFF4EDDB),
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.red,
-          backgroundColor: const Color(0xFFE7626C)
-          ),
+        scaffoldBackgroundColor: const Color(0xFFE7626C),
         textTheme: const TextTheme(
-          displayLarge: TextStyle(
-            color: Color(0xFF232B55),
-          )
-        ),
+            displayLarge: TextStyle(
+          color: Color(0xFF232B55),
+        )),
       ),
     );
   }
@@ -90,8 +86,8 @@ class App extends StatelessWidget {
                   const SizedBox(
                     height: 6,
                   ),
-                  const Row(
-                    children: [
+                  Row(
+                    children: const [
                       Text(
                         "\$5 194 382",
                         style: TextStyle(
