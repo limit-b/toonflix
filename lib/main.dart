@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/home_screen.dart';
 
 void main() {
-  runApp(const App());
+  runApp(const MyStlApp());
+}
+
+class MyStlApp extends StatelessWidget {
+  const MyStlApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: const HomeScreen(),
+      theme: ThemeData(
+        cardColor: const Color(0xFFF4EDDB),
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.red,
+          backgroundColor: const Color(0xFFE7626C)
+          ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            color: Color(0xFF232B55),
+          )
+        ),
+      ),
+    );
+  }
 }
 
 class App extends StatelessWidget {
@@ -66,8 +90,8 @@ class App extends StatelessWidget {
                   const SizedBox(
                     height: 6,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text(
                         "\$5 194 382",
                         style: TextStyle(
