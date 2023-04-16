@@ -2,34 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 import 'package:toonflix/services/api_service.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  bool isLoading = true;
-  List<WebtoonModel> webtoons = [];
-
-  void waitForWebtoons() async {
-    webtoons = await ApiService.getTodaysToons();
-    isLoading = false;
-
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    waitForWebtoons();
-  }
+  final Future<List<WebtoonModel>> webtoons = ApiService.getTodaysToons();
 
   @override
   Widget build(BuildContext context) {
-    print("==> webtoons: $webtoons");
-    print("==> isLoading: $isLoading");
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -41,6 +20,42 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 2.0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.green,
+      ),
+      body: FutureBuilder(
+        future: webtoons,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // return ListView(
+            //   children: [
+            //     for (var webtoon in snapshot.data!) Text(webtoon.title),
+            //   ],
+            // );
+            // return ListView.builder(
+            //   scrollDirection: Axis.horizontal,
+            //   itemBuilder: (context, index) {
+            //     print("==> index: $index");
+            //     var webtoon = snapshot.data![index];
+            //     return Text(webtoon.title);
+            //   },
+            //   itemCount: snapshot.data!.length,
+            // );
+            return ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                print("==> index: $index");
+                var webtoon = snapshot.data![index];
+                return Text(webtoon.title);
+              },
+              separatorBuilder: (context, index) => const SizedBox(
+                width: 20.0,
+              ),
+              itemCount: snapshot.data!.length,
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
       backgroundColor: Colors.white,
     );
